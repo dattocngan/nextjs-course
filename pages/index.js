@@ -30,7 +30,7 @@ const HomePage = (props) => {
 //     }
 // }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     //fetch data from API
 
     const client = await MongoClient.connect('mongodb+srv://dattocngan:doitruong@cluster0.ptlub.mongodb.net/meetups?retryWrites=true&w=majority');
@@ -50,8 +50,7 @@ export async function getStaticProps() {
                 image: meetup.image,
                 id: meetup._id.toString()
             }))
-        },
-        revalidate: 1
+        }
     };
 }
 
